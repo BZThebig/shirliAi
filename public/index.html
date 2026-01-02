@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>שירלי - עוזרת קולית</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#050509">
+
+    <!-- מצב Web App באייפון -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="icon-192.png">
+</head>
+<body>
+    <div class="app">
+        <header class="app-header">
+            <div class="app-title">
+                <span class="dot"></span>
+                <h1>שירלי</h1>
+                <p>עוזרת קולית חכמה בעברית</p>
+            </div>
+            <button id="settings-btn" class="icon-btn" type="button" aria-label="הגדרות">
+                ⚙️
+            </button>
+        </header>
+
+        <main class="app-main">
+            <section id="chat-display" class="chat-area" aria-live="polite">
+                <p class="placeholder">
+                    אמרו "שירלי" או לחצו על המיקרופון כדי להתחיל.  
+                    נסו: "מה השעה", "איזה תאריך היום", "התחילי טיימר 3 דקות" או "פתחי ווטסאפ".
+                </p>
+            </section>
+
+            <section class="wave-section">
+                <div class="siri-wave-container" id="wave-container" aria-hidden="true"></div>
+                <p class="listening-status" id="listening-status">ממתינה להפעלה...</p>
+            </section>
+        </main>
+
+        <footer class="app-footer">
+            <div class="footer-row">
+                <button id="sync-contacts" class="secondary-btn" type="button">
+                    👥 סנכרון אנשי קשר
+                </button>
+
+                <button id="mode-toggle" class="secondary-btn" type="button">
+                    💬 מצב: שיחה טבעית
+                </button>
+            </div>
+
+            <button id="mic-toggle" class="primary-btn" type="button" aria-pressed="false">
+                🎙️ הפעלת האזנה
+            </button>
+        </footer>
+    </div>
+
+    <!-- חלון הגדרות -->
+    <div id="settings-modal" class="modal" hidden>
+        <div class="modal-backdrop" id="settings-backdrop"></div>
+        <div class="modal-content">
+            <header class="modal-header">
+                <h2>הגדרות שירלי</h2>
+                <button id="close-settings" class="icon-btn" type="button">✖</button>
+            </header>
+
+            <div class="modal-body">
+                <div class="settings-section">
+                    <h3>מצבי דיבור</h3>
+                    <label class="switch-row">
+                        <span>מצב שיחה טבעית (ממשיכה להקשיב)</span>
+                        <input type="checkbox" id="natural-conversation-toggle" checked>
+                    </label>
+                    <label class="switch-row">
+                        <span>מצב שקט (בלי קול, רק טקסט)</span>
+                        <input type="checkbox" id="mute-mode-toggle">
+                    </label>
+                </div>
+
+                <div class="settings-section">
+                    <h3>זיכרון</h3>
+                    <label class="switch-row">
+                        <span>זיכרון ארוך טווח (העדפות)</span>
+                        <input type="checkbox" id="long-memory-toggle" checked>
+                    </label>
+                    <button id="clear-memory" class="danger-btn" type="button">
+                        🧹 נקה זיכרון ארוך טווח
+                    </button>
+                </div>
+
+                <div class="settings-section">
+                    <h3>מידע על שירלי</h3>
+                    <p class="settings-info">
+                        שירלי היא עוזרת קולית חכמה בעברית, עם פקודות מערכת, טיימרים, מזג אוויר, פתיחת אפליקציות
+                        ושיחה חופשית המבוססת על מודל AI.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <noscript>
+        <div class="noscript-warning">
+            האתר דורש הפעלת JavaScript כדי לעבוד.
+        </div>
+    </noscript>
+
+    <script src="main.js" defer></script>
+</body>
+</html>
